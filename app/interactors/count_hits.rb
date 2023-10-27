@@ -1,8 +1,8 @@
-module CountHits
+class CountHits
   include Interactor
 
-  def call(user: user)
-    count = current_count(user)
+  def call
+    count = current_count
     if count <= 10
       context.count = count
     else
@@ -10,9 +10,9 @@ module CountHits
     end
   end
 
-  def current_count(user)
+  def current_count
     current_month = Time.zone.now.month
-    hit = user.where(month: current_month)
+    hit = context.user.hits.where(month: current_month)
     hit.count
   end
 end

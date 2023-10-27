@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_filter :user_quota
+  before_action :user_quota
 
   def user_quota
-    render json: { error: 'over quota' } if current_user.count_hits >= 10000
+    id = params.require("user_id")
+    user = User.find(id)
+    CountHits.call(user: user)
   end
 end
