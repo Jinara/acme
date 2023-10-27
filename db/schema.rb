@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_27_120753) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_27_161543) do
   create_table "hits", force: :cascade do |t|
     t.string "endpoint", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "month", null: false
+    t.integer "year", null: false
+    t.integer "current_count", null: false
     t.index ["user_id"], name: "index_hits_on_user_id"
   end
 

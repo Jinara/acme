@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   def user_quota
     id = params.require("user_id")
     user = User.find(id)
-    CountHits.call(user: user)
+    response = CountHits.call(user: user)
+
+    if not response.success?
+      render json: { error: response.message }
+    end
   end
 end

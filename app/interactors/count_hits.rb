@@ -3,7 +3,7 @@ class CountHits
 
   def call
     count = current_count
-    if count <= 10
+    if count < 10
       context.count = count
     else
       context.fail!(message: "over quota")
@@ -12,7 +12,8 @@ class CountHits
 
   def current_count
     current_month = Time.zone.now.month
-    hit = context.user.hits.where(month: current_month)
-    hit.count
+    current_year = Time.zone.now.year
+    hit = context.user.hits.where(month: current_month, year: current_year).last
+    hit.current_count
   end
 end
