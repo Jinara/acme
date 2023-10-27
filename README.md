@@ -6,19 +6,31 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+3.1.1
 
 * System dependencies
 
 * Configuration
 
 * Database creation
-
-* Database initialization
+rails db:create
+rails db:migrate
 
 * How to run the test suite
+bundle exec rspec --color spec/requests/product_spec.rb
 
-* Services (job queues, cache servers, search engines, etc.)
+* Style and Clean code
+- Rubycritic
+bundle exec rubycritic
 
-* Deployment instructions
+- Rubocop
+bundle exec rubocop
 
-* ...
+- Bullet
+
+- Brakeman
+bundle exec brakeman
+
+
+
+
